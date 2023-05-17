@@ -11,27 +11,15 @@ function calculateMinCost() {
 	let result = document.getElementById("result");
 	let arr = text.split(",")
 	let sortedArray = arr.map(Number).sort();
-    let ans = []
-    ans.push(sortedArray[0]+sortedArray[1])
-    let j = 0, sum = 0, n = sortedArray.length;
-    for(let i = 2; i < n; i++){
-        if(ans[j] <= sortedArray[i]){
-            ans.push(ans[j] + sortedArray[i])
-            j++;
-        }else if(ans[j] <= sum){
-            ans.push(sum)
-            sum = 0;
-            j++;
-        }else{
-            sum += sortedArray[i];
-        }
+	let arr2 = [...sortedArray]
+    let sum = 0, minCost = 0;
+    for(let i = 0; i < sortedArray.length; i++){
+        arr2 = arr2.sort((a,b)=>a-b);
+        let a = arr2.shift();
+        let b = arr2.shift();
+        sum = a + b;
+        if(sum) minCost += sum
+        arr2.push(sum);
     }
-    if(sum !== 0){
-        ans.push(sum)
-        j++;  
-    } 
-    ans.push(ans[j] + ans[j-1])	
-	let minimumCost = 0
-    for(let i in ans) minimumCost += ans[i]; 
-	result.innerHTML = minimumCost
+	result.innerHTML = minCost
 }  
