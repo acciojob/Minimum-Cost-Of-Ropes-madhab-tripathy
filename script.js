@@ -5,36 +5,6 @@
 	[12, 16]        => 12 + 16 = 28       // 12 is minimum
 	sum             => 6 + 12 + 16 + 28 = 63 (ans) 
 */
-function calculateMinCost() {
-  //your code here
-	let text = document.getElementById("rope-lengths").value;
-	let result = document.getElementById("result");
-	let arr = text.split(",")
-	arr = arr.map(Number);
-	 if (arr.length <= 1) {
-	    result.innerHTML = ans
-		 return;
-	  }
-
-  let ans = 0;
-  const pq = new MinHeap();
-
-  for (let i = 0; i < n; i++) {
-	pq.insert(arr[i]);
-  }
-
-  while (!pq.isEmpty()) {
-	const first = pq.extractMin();
-	const second = pq.extractMin();
-	const temp = first + second;
-	ans += temp;
-	if (!pq.isEmpty()) {
-	  pq.insert(temp);
-	}
-  }
-	result.innerHTML = ans
-}  
-
 // MinHeap class
 class MinHeap {
   constructor() {
@@ -57,7 +27,7 @@ class MinHeap {
     }
   }
 
-  extractMin() {
+  extractMin()() {
     if (this.heap.length === 0) {
       return null;
     }
@@ -96,3 +66,32 @@ class MinHeap {
     return this.heap.length === 0;
   }
 }
+
+function calculateMinCost() {
+  //your code here
+	let text = document.getElementById("rope-lengths").value;
+	let result = document.getElementById("result");
+	let arr = text.split(",");
+	arr.map(Number);
+	result.innerHTML = numArr
+	let ans = 0;
+	 if (arr.length <= 1) {
+	    result.innerHTML = ans
+		// return;
+	  }
+	  const pq = new MinHeap();
+	  for (let i = 0; i < n; i++) {
+		pq.insert(arr[i]);
+	  }
+	  while (!pq.isEmpty()) {
+		const first = pq.extractMin();
+		const second = pq.extractMin();
+		const temp = first + second;
+		ans += temp;
+		if (!pq.isEmpty()) {
+		  pq.insert(temp);
+		}
+	  }
+	result.innerHTML = ans
+}  
+
