@@ -4,14 +4,14 @@
 
 function calculateMinCost() {
   //your code here
-	let text = document.getElementById("rope-lengths").value;
+	let text = document.getElementById("rope-lengths").value.trim();
 	let result = document.getElementById("result");
 	let arr = text.split(",");
 	arr = arr.map(Number);
 	// result.innerHTML = 1
 	let ans = 0;
 	 if (arr.length <= 1) {
-	    result.innerHTML = ans
+	    result.innerText = ans
 		// return;
 	  }
 	  const pq = new MinHeap();
@@ -27,7 +27,7 @@ function calculateMinCost() {
 		  pq.insert(temp);
 		}
 	  }
-	result.innerHTML = ans
+	result.innerText = ans
 }  
 class MinHeap {
   constructor() {
