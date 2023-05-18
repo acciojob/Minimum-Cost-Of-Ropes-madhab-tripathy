@@ -6,8 +6,8 @@ function calculateMinCost() {
   //your code here
 	let text = document.getElementById("rope-lengths").value.trim();
 	let result = document.getElementById("result");
-	let arr = text.split(",");
-	arr = arr.map(Number);
+	let arr = text.split(",").map(x=> parseInt(x.trim()))
+	// arr = arr.map(Number);
 	// result.innerHTML = 1
 	let ans = 0;
 	 if (arr.length <= 1) {
